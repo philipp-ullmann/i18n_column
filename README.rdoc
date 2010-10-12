@@ -4,13 +4,17 @@
 
 This extension provides the capabilities of storing and retrieving translations from a single database column. The translations are stored as a JSON object i.e. {"en":"Home","de":"Zuhause"}.
 
-The current and default language are stored within the class I18nColumn::Language. On each request the current language must be set via I18nColumn::Language.current_lang = 'en'. If not set the default
-language is taken. I18nColumn::Language.current_lang is used as the JSON key to store a translation i.e. "en":"Home".
+The current and default language are stored within the class <tt>I18nColumn::Language</tt>. On each request the current language must be set via <tt>I18nColumn::Language.current_lang = 'en'</tt>. If not set the default language is taken. <tt>I18nColumn::Language.current_lang</tt> is used as the JSON key to store a translation i.e. "en":"Home".
 
-Run rails generate i18n_column:install. It will generate a i18n_column initializer file. There the default language can be set.
+== Installation
+
+* Recently a gem version will be provided on gemcutter.
+* Run <tt>rails generate i18n_column:install</tt>. It will generate a i18n_column initializer file in order to set the default language.
 
 == Example
- 
+
+<b>Migration</b>
+
  class CreateNodes < ActiveRecord::Migration
    def self.up
      create_table(:nodes) do |t|
@@ -23,9 +27,13 @@ Run rails generate i18n_column:install. It will generate a i18n_column initializ
    end
  end
 
+<b>Model</b>
+
  class Node < ActiveRecord::Base
    i18n_column(:name)
  end
+
+<b>Controller</b>
 
  class ApplicationController < ActionController::Base
    before_filter(:set_i18n_column_lang)
@@ -37,7 +45,7 @@ Run rails generate i18n_column:install. It will generate a i18n_column initializ
    end
  end
 
-Rails console
+<b>Console</b>
 
  I18nColumn::Language.current_lang = 'en'
  node = Node.create!(:name => 'Home') => {"en":"Home"}

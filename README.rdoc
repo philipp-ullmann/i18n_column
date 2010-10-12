@@ -1,16 +1,51 @@
 = i18n_column
 
-Description goes here.
+== Introduction
 
-== Note on Patches/Pull Requests
+This extension provides the capabilities of storing and retrieving translations from a single database column. The translations are stored as a JSON object i.e. {"en":"Home","de":"Zuhause"}.
+
+The current and default language are stored within the class I18nColumn::Language. On each request the current language must be set via I18nColumn::Language.current_lang = 'en'. If not set the default
+language is taken. I18nColumn::Language.current_lang is used as the JSON key to store a translation i.e. "en":"Home".
+
+Run rails generate i18n_column:install. It will generate a i18n_column initializer file. There the default language can be set.
+
+== Example
  
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+ class CreateNodes < ActiveRecord::Migration
+   def self.up
+     create_table(:nodes) do |t|
+       t.text(:name)
+     end
+   end
+
+   def self.down
+     drop_table :nodes
+   end
+ end
+
+ class Node < ActiveRecord::Base
+   i18n_column(:name)
+ end
+
+ class ApplicationController < ActionController::Base
+   before_filter(:set_i18n_column_lang)
+
+   private
+
+   def set_i18n_column_lang
+     I18nColumn::Language.current_lang = params[:lang]
+   end
+ end
+
+Rails console
+
+ I18nColumn::Language.current_lang = 'en'
+ node = Node.create!(:name => 'Home') => {"en":"Home"}
+ node.name => 'Home'
+ I18nColumn::Language.current_lang = 'de'
+ node.name = 'Zuhause'
+ node.save! => {"en":"Home","de":"Zuhause"}
+ node.name => 'Zuhause'
 
 == Copyright
 

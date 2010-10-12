@@ -2,7 +2,7 @@
 module I18nColumn
   class Language
     DEFAULT_LANG = 'en'
-  
+    
     # Returns the current language.
     def self.current_lang
       ::Thread.current[:i18n_column_current_lang] || DEFAULT_LANG

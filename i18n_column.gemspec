@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{i18n_column}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Philipp Ullmann"]
-  s.date = %q{2010-10-12}
+  s.date = %q{2010-10-13}
   s.description = %q{This extension provides the capabilities of storing and retrieving translations from a single database column. The translations are serialized using JSON.}
   s.email = %q{philipp.ullmann@create.at}
   s.extra_rdoc_files = [
@@ -23,7 +23,13 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "i18n_column.gemspec",
+     "lib/generators/i18n_column/install/install_generator.rb",
+     "lib/generators/i18n_column/install/templates/config/initializers/i18n_column.rb",
      "lib/i18n_column.rb",
+     "lib/i18n_column/base.rb",
+     "lib/i18n_column/language.rb",
+     "spec/.rspec",
      "spec/i18n_column_spec.rb",
      "spec/spec_helper.rb"
   ]

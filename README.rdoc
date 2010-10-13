@@ -16,7 +16,7 @@ The current and default language are stored within the class <tt>I18nColumn::Lan
 
 <b>Bundler</b>
 
-	gem('i18n_column')
+ gem('i18n_column')
 
 <b>Gem configuration</b>
 

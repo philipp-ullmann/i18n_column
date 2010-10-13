@@ -6,10 +6,23 @@ This extension provides the capabilities of storing and retrieving translations 
 
 The current and default language are stored within the class <tt>I18nColumn::Language</tt>. On each request the current language must be set via <tt>I18nColumn::Language.current_lang = 'en'</tt>. If not set the default language is taken. <tt>I18nColumn::Language.current_lang</tt> is used as the JSON key to store a translation i.e. "en":"Home".
 
+<tt>i18n_column</tt> is tested with rails version 3.
+
 == Installation
 
-* Recently a gem version will be provided on gemcutter.
-* Run <tt>rails generate i18n_column:install</tt>. It will generate a i18n_column initializer file in order to set the default language.
+<b>Gem</b>
+
+ gem install i18n_column
+
+<b>Bundler</b>
+
+	gem('i18n_column')
+
+<b>Gem configuration</b>
+
+ rails generate i18n_column:install
+
+This will generate an i18n_column initializer file in order to configure the plugin.
 
 == Example
 

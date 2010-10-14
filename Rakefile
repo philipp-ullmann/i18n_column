@@ -1,9 +1,9 @@
 require('rubygems')
 require('rake')
-require 'rspec/core/rake_task'
+require('rspec/core/rake_task')
 
 begin
-  require 'jeweler'
+  require('jeweler')
   Jeweler::Tasks.new do |gem|
     gem.name = "i18n_column"
     gem.summary = %Q{Storing and retrieving translations from a single database column}

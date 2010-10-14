@@ -4,7 +4,7 @@
 
 This extension provides the capabilities of storing and retrieving translations from a single database column. The translations are stored as a JSON object i.e. {"en":"Home","de":"Zuhause"}.
 
-The current and default language are stored within the class <tt>I18nColumn::Language</tt>. On each request the current language must be set via <tt>I18nColumn::Language.current_lang = 'en'</tt>. If not set the default language is taken. <tt>I18nColumn::Language.current_lang</tt> is used as the JSON key to store a translation i.e. "en":"Home".
+The current and default locale are retrieved from the Rails Internationalization (I18n) API i.e. I18n.default_locale and I18n.locale. Set the current locale on each request with i.e. <tt>I18n.locale = :de</tt>. If not set the default locale will be taken: <tt>I18n.default_locale</tt>. <tt>I18n.locale</tt> is used as the JSON key to store a translation i.e. <tt>"en":"Home"</tt>.
 
 <tt>i18n_column</tt> is tested with rails version 3.
 
@@ -17,12 +17,6 @@ The current and default language are stored within the class <tt>I18nColumn::Lan
 <b>Bundler</b>
 
  gem('i18n_column')
-
-<b>Gem configuration</b>
-
- rails generate i18n_column:install
-
-This will generate an i18n_column initializer file in order to configure the plugin.
 
 == Example
 
@@ -49,21 +43,25 @@ This will generate an i18n_column initializer file in order to configure the plu
 <b>Controller</b>
 
  class ApplicationController < ActionController::Base
-   before_filter(:set_i18n_column_lang)
+   before_filter(:set_locale)
 
    private
 
-   def set_i18n_column_lang
-     I18nColumn::Language.current_lang = params[:lang]
+   def set_locale
+     I18n.locale = params[:locale]
    end
  end
 
+<b>Set the default locale in config/application.rb file</b>
+
+ config.i18n.default_locale = :de
+
 <b>Console</b>
 
- I18nColumn::Language.current_lang = 'en'
+ I18n.locale = :en
  node = Node.create!(:name => 'Home') => {"en":"Home"}
  node.name => 'Home'
- I18nColumn::Language.current_lang = 'de'
+ I18n.locale = :de
  node.name = 'Zuhause'
  node.save! => {"en":"Home","de":"Zuhause"}
  node.name => 'Zuhause'

@@ -4,7 +4,7 @@
 
 This extension provides the capabilities of storing and retrieving translations from a single database column. The translations are stored as a JSON object i.e. {"en":"Home","de":"Zuhause"}.
 
-The current and default locale are retrieved from the Rails Internationalization (I18n) API i.e. I18n.default_locale and I18n.locale. Set the current locale on each request with i.e. <tt>I18n.locale = :de</tt>. If not set the default locale will be taken: <tt>I18n.default_locale</tt>. <tt>I18n.locale</tt> is used as the JSON key to store a translation i.e. <tt>"en":"Home"</tt>.
+The current and default locale are retrieved from the {Rails Internationalization (I18n) API}[http://guides.rubyonrails.org/i18n.html]. Set the current locale on each request with i.e. <tt>I18n.locale = :de</tt>. If not set the default locale will be taken: <tt>I18n.default_locale</tt>. <tt>I18n.locale</tt> is used as the JSON key to store a translation i.e. <tt>"en":"Home"</tt>.
 
 <tt>i18n_column</tt> is tested with rails version 3.
 
@@ -30,7 +30,7 @@ The current and default locale are retrieved from the Rails Internationalization
    end
 
    def self.down
-     drop_table :nodes
+     drop_table(:nodes)
    end
  end
 

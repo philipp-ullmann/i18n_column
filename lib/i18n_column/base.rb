@@ -29,6 +29,10 @@ module I18nColumn
               value
             end
             
+            def #{col_name}_field
+              self.#{col_name}
+            end
+            
             def #{col_name}_field=(value)
               self.#{col_name} = value
             end

@@ -21,16 +21,20 @@ module I18nColumn
               json = #{col_name}_to_json
               json.nil? ? nil : json[::I18n.locale.to_s]
             end
-          
+            
             def #{col_name}=(value)
               json = #{col_name}_to_json || {}
               json[::I18n.locale.to_s] = value
               self[:#{col_name}] = json.to_json
               value
             end
-          
+            
+            def #{col_name}_field=(value)
+              self.#{col_name} = value
+            end
+            
             private
-          
+            
             def #{col_name}_to_json
               ::ActiveSupport::JSON::decode(self[:#{col_name}].to_s) || nil
             end

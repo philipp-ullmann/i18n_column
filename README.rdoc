@@ -68,9 +68,9 @@ The current and default locale are retrieved from the {Rails Internationalizatio
 
 == Known issues
 
-* Rails versions > <tt>3.0.1</tt>: JSON hash is displayed in form fields. Workaround:
+* Rails versions greater than <tt>3.0.1</tt>: JSON hash instead of translation is displayed in form fields. Workaround:
 
- f.text_field(:name_field) instead of f.text_field(:name)
+ f.text_field(:fname) instead of f.text_field(:name)
 
 == Copyright
 

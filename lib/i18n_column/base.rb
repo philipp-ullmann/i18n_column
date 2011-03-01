@@ -18,28 +18,28 @@ module I18nColumn
         for col_name in col_names
           class_eval <<-EOV
             def #{col_name}
-              json = #{col_name}_to_json
+              json = decode_#{col_name}
               json.nil? ? nil : json[::I18n.locale.to_s]
             end
             
             def #{col_name}=(value)
-              json = #{col_name}_to_json || {}
+              json = decode_#{col_name} || {}
               json[::I18n.locale.to_s] = value
               self[:#{col_name}] = json.to_json
               value
             end
             
-            def #{col_name}_field
+            def f#{col_name}
               self.#{col_name}
             end
             
-            def #{col_name}_field=(value)
+            def f#{col_name}=(value)
               self.#{col_name} = value
             end
             
             private
             
-            def #{col_name}_to_json
+            def decode_#{col_name}
               ::ActiveSupport::JSON::decode(self[:#{col_name}].to_s) || nil
             end
           EOV

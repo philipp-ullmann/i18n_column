@@ -66,6 +66,12 @@ The current and default locale are retrieved from the {Rails Internationalizatio
  node.save! => {"en":"Home","de":"Zuhause"}
  node.name => 'Zuhause'
 
+== Known issues
+
+* Rails versions > <tt>3.0.1</tt>: JSON hash is displayed in form fields. Workaround:
+
+ f.text_field(:name_field) instead of f.text_field(:name)
+
 == Copyright
 
 Copyright (c) 2010 Philipp Ullmann. See LICENSE for details.

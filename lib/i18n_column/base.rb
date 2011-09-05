@@ -40,7 +40,8 @@ module I18nColumn
             private
             
             def decode_#{col_name}
-              ::ActiveSupport::JSON::decode(self[:#{col_name}].to_s) || nil
+              val = self[:#{col_name}]
+              (val.inspect == "nil" || val.to_s.blank?) ? nil : ::ActiveSupport::JSON::decode(val.to_s)
             end
           EOV
         end

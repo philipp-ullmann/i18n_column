@@ -18,6 +18,7 @@ tmtags
 .bundle
 Gemfile.lock
 pkg/*
+nbproject
 
 ## PROJECT::SPECIFIC
 .rvmrc

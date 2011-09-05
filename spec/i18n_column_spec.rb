@@ -88,6 +88,14 @@ describe(I18nColumn::Base) do
       end
     end
   end
+
+  context('column with empty attribute') do
+    it('should return nil instead throwing an JSON multibyte error') do
+      @node = Node.new
+      @node[:name] = ''
+      @node.name = 'test'
+    end
+  end
   
   describe('#fname') do
     it('should call method name') do

@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = 'i18n_column'
   s.version     = I18nColumn::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ['Philipp Ullmann']
+  s.authors     = ['Philipp Ullmann', 'René Groß']
   s.email       = 'philipp.ullmann@create.at'
   s.homepage    = 'http://github.com/create-philipp-ullmann/i18n_column'
   s.summary     = 'Storing and retrieving translations from a single database column'
@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib']
   
-  s.add_development_dependency('rspec', ['>= 2.5.0'])
-  s.add_development_dependency('sqlite3-ruby', ['>= 1.3.3'])
-  s.add_development_dependency('activerecord', ['>= 3.0.5'])
+  s.add_development_dependency('rspec', ['>= 2.6.0'])
+  s.add_development_dependency('sqlite3', ['>= 1.3.4'])
+  s.add_development_dependency('activerecord', ['>= 3.1.0.rc8'])
 end
